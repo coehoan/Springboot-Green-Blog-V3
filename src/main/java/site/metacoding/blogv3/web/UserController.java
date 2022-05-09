@@ -3,7 +3,6 @@ package site.metacoding.blogv3.web;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.blogv3.config.auth.LoginUser;
 import site.metacoding.blogv3.service.UserService;
-import site.metacoding.blogv3.util.UtilFileUpload;
 import site.metacoding.blogv3.util.UtilValid;
 import site.metacoding.blogv3.web.dto.user.JoinReqDto;
 import site.metacoding.blogv3.web.dto.user.PasswordResetReqDto;
@@ -34,6 +32,7 @@ public class UserController {
     public ResponseEntity<?> profileImgUpdate(
             @AuthenticationPrincipal LoginUser loginUser,
             MultipartFile profileImgFile) {
+        // 주소로 받은 id를 사용하려면 세션의 id랑 비교해서 권한체크를 해줘야함.
 
         // 세션값 변경
         userService.프로파일이미지변경(loginUser.getUser(), profileImgFile, session);
