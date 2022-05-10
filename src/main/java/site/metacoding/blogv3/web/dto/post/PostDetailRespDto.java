@@ -11,4 +11,5 @@ import site.metacoding.blogv3.domain.post.Post;
 public class PostDetailRespDto {
     private Post post;
     private boolean isPageOwner; // getter가 변수명 그대로 나옴
+    private boolean isLove; // 좋아요 유무
 }
